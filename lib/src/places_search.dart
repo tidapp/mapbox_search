@@ -22,7 +22,7 @@ class PlacesSearch {
   /// Multiple options can be comma-separated.
   ///
   /// For more information on the available types, see the [data types section](https://docs.mapbox.com/api/search/geocoding/#data-types).
-  final PlaceType? types;
+  final List<PlaceType>? types;
 
   final String _url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
 
@@ -55,7 +55,7 @@ class PlacesSearch {
     }
 
     if (types != null) {
-      finalUrl += "&types=${types?.value}";
+      finalUrl += "&types=${types?.map((e) => e.value).join(',')}";
     }
 
     return finalUrl;
